@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class tictac
 {
@@ -10,10 +11,16 @@ public class tictac
             Arrays.fill(board[i], '.');
         }
 
-        /*while (!victory(board) || !draw())
+        while (!victory(board) || !draw())
         {
             ShowBoard(board);
-        }*/
+        }
+
+        Scanner scan = new Scanner(System.in);
+
+        int a = scan.nextInt();
+
+
 
         ShowBoard(board);
 
