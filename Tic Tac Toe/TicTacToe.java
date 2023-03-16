@@ -3,6 +3,23 @@ import java.util.Scanner;
 
 public class tictac
 {
+    
+    final char[][][] WINNINGS =
+        {
+                {{'0', '0'}, {'0', '1'}, {'0','2'}}, //first col
+                {{'1', '0'}, {'1', '1'}, {'1', '2'}}, // second col
+                {{'2', '0'}, {'2', '1'}, {'2', '2'}}, //trd col
+
+                {{'0', '0'}, {'1', '0'}, {'2','0'}}, //first row
+                {{'0', '1'}, {'1', '1'}, {'2', '1'}}, // second row
+                {{'0', '2'}, {'1', '2'}, {'2', '2'}}, //trd row
+
+                //diagonal
+                {{'0', '0'}, {'1', '1'}, {'2','2'}}, //left-right
+                {{'0', '2'}, {'1', '1'}, {'2', '0'}} // right-left
+        };
+    
+    
     public static void main(String[] args)
     {
         char[][] board = new char[3][3];
