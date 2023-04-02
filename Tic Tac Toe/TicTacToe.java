@@ -1,81 +1,156 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class tictac
+public class TicTacToe
 {
-    
-    final char[][][] WINNINGS =
-        {
-                {{'0', '0'}, {'0', '1'}, {'0','2'}}, //first col
-                {{'1', '0'}, {'1', '1'}, {'1', '2'}}, // second col
-                {{'2', '0'}, {'2', '1'}, {'2', '2'}}, //trd col
+    int round = 0;
 
-                {{'0', '0'}, {'1', '0'}, {'2','0'}}, //first row
-                {{'0', '1'}, {'1', '1'}, {'2', '1'}}, // second row
-                {{'0', '2'}, {'1', '2'}, {'2', '2'}}, //trd row
+    char[][] boardTemplate = {{'1','2','3'},{'4','5','6'},{'7','8','9'}};
+    char[][] board = {{'1','2','3'},{'4','5','6'},{'7','8','9'}};
+    
+    char player;
 
-                //diagonal
-                {{'0', '0'}, {'1', '1'}, {'2','2'}}, //left-right
-                {{'0', '2'}, {'1', '1'}, {'2', '0'}} // right-left
-        };
-    
-    
-    public static void main(String[] args)
+    public void play()
     {
-        char[][] board = new char[3][3];
-
-        for (int i = 0; i < board.length; i++) {
-            Arrays.fill(board[i], '.');
-        }
-
-        while (!victory(board) || !draw())
+        while(!victory() && !draw())
         {
-            ShowBoard(board);
+            showBoard();
+            resetBoard();
+            getPlayerPosition();
         }
-
-        Scanner scan = new Scanner(System.in);
-
-        int a = scan.nextInt();
-
-
-
-        ShowBoard(board);
-
-
     }
-
-    public static boolean victory(char[][] board)
+    
+    public void resetBoard() 
     {
-        for (char[] line: board)
+        if(round > 0)
+        return;
+        
+        for (int i = 0; i < board.length; i++) 
         {
-            for (char position: line)
-            {
+            Arrays.fill(board[i], ' ');
+        }
+    }
+    
+    
+    //victory check function
+    boolean victory()
+    {
+        //rows
+        for (char[] row : board) 
+        {
+            if(row[0] != 'X' && row[0] != 'Y') break;
 
+            if(row[0] == row[1] && row[1] == row[2])
+            {
+                showBoard();
+                return true;
             }
         }
 
-        if (board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X')
+        //columns
+        for (int i = 0; i < 3; i++) 
         {
-            return true;
+            if(board[0][i] != 'X' && board[0][i] != 'Y') break;
+
+            if(board[0][i] == board[1][i] && board[1][i] == board[2][i])
+            {
+                showBoard();
+                return true;
+            }  
         }
 
+        if(board[1][1] != 'X' && board[1][1] != 'Y') return false;
+
+        //left-right diagonal
+        if(board[0][0] == board[1][1] && board[1][1] == board[2][2])
+        {
+            showBoard();
+            return true;
+        }
+        if(board[0][2] == board[1][1] && board[1][1] == board[2][0])
+        {
+            showBoard();
+            return true;
+        }
+        
+        return false;
+    }
+    
+    boolean draw()
+    {
+        if(round >= 9)
+        {
+            showBoard();
+            return true;
+        }
+        
         return false;
     }
 
-    public static  boolean draw()
-    {
-        return  false;
-    }
-
-    public static void ShowBoard(char[][] board)
+    void showTemplate()
     {
         for (int i = 0; i < 3; i++)
         {
+            System.out.print("+-+-+-+\n|");
+            
             for (int j = 0; j < 3; j++)
             {
-                System.out.print(board[i][j]);
+                System.out.print(boardTemplate[i][j] + "|");
             }
             System.out.println();
         }
+        System.out.println("+-+-+-+");
+    }
+
+    public void showBoard()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            System.out.print("+-+-+-+\n|");
+
+            for (int j = 0; j < 3; j++)
+            {
+                System.out.print(board[i][j] + "|");
+            }
+            System.out.println();
+        }
+        System.out.println("+-+-+-+");
+    }
+
+    public void getPlayerPosition()
+    {
+        char chosenPosition;
+
+        Scanner scan = new Scanner(System.in);
+        chosenPosition = scan.next().charAt(0);
+
+        //checking if position played is valid
+        for (char[] row : board) 
+        {
+            for (char position : row) 
+            {
+                if(chosenPosition == position)
+                    getPlayerPosition();
+            }
+        }
+        
+        for (int i = 0; i < 3; i++) 
+        {
+            for (int j = 0; j < 3; j++) 
+            {
+                if(chosenPosition == boardTemplate[i][j])
+                {
+                    if(round % 2 == 0)
+                        player = 'X';
+                    else
+                        player = 'O';
+                    boardTemplate[i][j] = player;
+                    board[i][j] = player;
+                    round++;
+                    return;
+                }
+            }
+        }
+
     }
 }
