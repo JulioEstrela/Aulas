@@ -20,7 +20,7 @@ public class TicTacToe
         }
     }
     
-    public void resetBoard() 
+    void resetBoard() 
     {
         if(round > 0)
         return;
@@ -38,7 +38,7 @@ public class TicTacToe
         //rows
         for (char[] row : board) 
         {
-            if(row[0] != 'X' && row[0] != 'Y') break;
+            if(row[0] != 'X' && row[0] != 'O') break;
 
             if(row[0] == row[1] && row[1] == row[2])
             {
@@ -50,7 +50,7 @@ public class TicTacToe
         //columns
         for (int i = 0; i < 3; i++) 
         {
-            if(board[0][i] != 'X' && board[0][i] != 'Y') break;
+            if(board[0][i] != 'X' && board[0][i] != 'O') break;
 
             if(board[0][i] == board[1][i] && board[1][i] == board[2][i])
             {
@@ -59,7 +59,7 @@ public class TicTacToe
             }  
         }
 
-        if(board[1][1] != 'X' && board[1][1] != 'Y') return false;
+        if(board[1][1] != 'X' && board[1][1] != 'O') return false;
 
         //left-right diagonal
         if(board[0][0] == board[1][1] && board[1][1] == board[2][2])
@@ -102,7 +102,7 @@ public class TicTacToe
         System.out.println("+-+-+-+");
     }
 
-    public void showBoard()
+    void showBoard()
     {
         for (int i = 0; i < 3; i++)
         {
@@ -117,7 +117,7 @@ public class TicTacToe
         System.out.println("+-+-+-+");
     }
 
-    public void getPlayerPosition()
+    void getPlayerPosition()
     {
         char chosenPosition;
 
