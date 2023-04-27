@@ -1,2 +1,2 @@
 # Aulas
-TI classes from IFSP
+IT classes from IFSP
