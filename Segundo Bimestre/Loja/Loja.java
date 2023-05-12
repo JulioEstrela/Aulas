@@ -4,8 +4,8 @@ import java.util.ArrayList;
 public class Loja 
 {
     private String nomeDaLoja;
-    private List<Cliente> clientes = new ArrayList();
-    private List<Pedido> pedidos = new ArrayList();
+    private List<Cliente> clientes = new ArrayList<>();
+    private List<Pedido> pedidos = new ArrayList<>();
 
     public Loja(){}
 
