@@ -1,10 +1,11 @@
 import java.util.List;
+import java.util.ArrayList;
 
 public class Loja 
 {
     private String nomeDaLoja;
-    private List<Cliente> clientes;
-    private List<Pedido> pedidos;
+    private List<Cliente> clientes = new ArrayList();
+    private List<Pedido> pedidos = new ArrayList();
 
     public Loja(){}
 
