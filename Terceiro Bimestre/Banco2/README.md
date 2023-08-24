@@ -1,1 +1,2 @@
-# Storing data using Maven
+# Database Exercise
+Storing data using Maven
