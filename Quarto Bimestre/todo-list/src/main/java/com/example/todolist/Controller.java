@@ -1,6 +1,7 @@
 package com.example.todolist;
 
 import com.example.todolist.model.Task;
+import com.example.todolist.util.HibernateUtil;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +10,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -48,7 +51,13 @@ public class Controller {
      */
     public void salvar(ActionEvent actionEvent) {
         //TODO get hour
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+
         Task t = new Task(txtTaskName.getText(), dateTaskDate.getValue());
+        session.persist(t);
+        transaction.commit();
+
         taskList.add(t);
         showTasks();
     }
