@@ -5,7 +5,6 @@ import com.example.todolist.util.HibernateUtil;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -13,7 +12,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import tornadofx.control.DateTimePicker;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,9 +25,7 @@ public class Controller {
     @FXML
     private TextField txtTaskName;
     @FXML
-    private DatePicker dateTaskDate;
-    @FXML
-    private TextField txtTaskTime;
+    private DateTimePicker taskDateTime;
     @FXML
     private TableView<Task> table;
     @FXML
@@ -54,7 +56,7 @@ public class Controller {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
 
-        Task t = new Task(txtTaskName.getText(), dateTaskDate.getValue());
+        Task t = new Task(txtTaskName.getText(), taskDateTime.getDateTimeValue().truncatedTo(ChronoUnit.MINUTES));
         session.persist(t);
         transaction.commit();
 

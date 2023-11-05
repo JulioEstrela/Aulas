@@ -4,7 +4,7 @@ module com.example.todolist {
     requires org.hibernate.orm.core;
     requires jakarta.persistence;
     requires java.naming;
-
+    requires tornadofx.controls;
 
     opens com.example.todolist to javafx.fxml;
     opens com.example.todolist.model to org.hibernate.orm.core;

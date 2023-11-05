@@ -1,43 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--<?import com.jfoenix.controls.JFXButton?>-->
+<!--<?import com.jfoenix.controls.JFXDatePicker?>-->
+<!--<?import com.jfoenix.controls.JFXTimePicker?>-->
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import tornadofx.control.DateTimePicker?>
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="579.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.todolist.Controller">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <children>
-      <TableView fx:id="table" prefHeight="284.0" prefWidth="389.0">
-        <columns>
-            <TableColumn fx:id="colId" prefWidth="44.000003814697266" text="id" />
+    <TableView fx:id="table" prefHeight="284.0" prefWidth="389.0">
+      <columns>
+          <TableColumn fx:id="colId" prefWidth="44.000003814697266" text="id" />
           <TableColumn fx:id="colName" prefWidth="169.5999755859375" text="Event" />
-          <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="155.20001220703125" text="Date" />
-            <TableColumn minWidth="0.0" prefWidth="168.79995727539062" text="Hour" />
-        </columns>
-      </TableView>
-      <VBox prefHeight="14.0" prefWidth="418.0">
-         <children>
-            <Label text="Task name" />
-            <TextField fx:id="txtTaskName" prefHeight="26.0" prefWidth="162.0" />
-         </children>
-      </VBox>
-      <Label text="Deadline" />
-      <HBox prefHeight="15.0" prefWidth="418.0" spacing="20.0">
-         <children>
-            <Label text="Date" />
-            <DatePicker fx:id="dateTaskDate" editable="false" prefHeight="26.0" prefWidth="139.0" />
-            <Label text="Hour" />
-            <TextField fx:id="txtTaskTime" prefHeight="26.0" prefWidth="147.0" />
-         </children>
-      </HBox>
-      <Button mnemonicParsing="false" onAction="#salvar" text="Salvar" />
-   </children>
+          <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="324.0000183105469" text="Date/Hour" />
+      </columns>
+    </TableView>
+    <VBox prefHeight="14.0" prefWidth="418.0">
+        <Label text="Task name" />
+        <TextField fx:id="txtTaskName" prefHeight="26.0" prefWidth="162.0" />
+    </VBox>
+    <Label text="Deadline" />
+   <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+      <children>
+         <Label text="Date/Hour" />
+         <DateTimePicker fx:id="taskDateTime" promptText="YYYY-DD-MM HH:mm" />
+      </children>
+      <opaqueInsets>
+         <Insets left="50.0" />
+      </opaqueInsets>
+   </HBox>
+   <Button mnemonicParsing="false" onAction="#salvar" text="Salvar" />
+
+<!--    <HBox prefHeight="15.0" prefWidth="418.0" spacing="20.0">-->
+<!--        <Label text="Date" />-->
+<!--      <JFXDatePicker fx:id="dateTaskDate" />-->
+<!--        <Label text="Hour" />-->
+<!--      <JFXTimePicker fx:id="timeTaskTime" />-->
+<!--    </HBox>-->
+<!--   <JFXButton onAction="#salvar" text="Salvar" />-->
 </VBox>
