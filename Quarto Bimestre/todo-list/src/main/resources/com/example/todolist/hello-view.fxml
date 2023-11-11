@@ -14,32 +14,32 @@
 <?import javafx.scene.layout.VBox?>
 <?import tornadofx.control.DateTimePicker?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="579.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.todolist.Controller">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="579.0" spacing="20.0" style="-fx-background-color: #121714;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.todolist.Controller">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-    <TableView fx:id="table" prefHeight="284.0" prefWidth="389.0">
+    <TableView fx:id="table" prefHeight="284.0" prefWidth="389.0" style="-fx-background-color: #3C896D;">
       <columns>
-          <TableColumn fx:id="colId" prefWidth="44.000003814697266" text="id" />
-          <TableColumn fx:id="colName" prefWidth="169.5999755859375" text="Event" />
+          <TableColumn fx:id="colId" prefWidth="44.000003814697266" style="-fx-background-color: #2C634F;" text="id" />
+          <TableColumn fx:id="colName" prefWidth="169.5999755859375" style="-fx-background-color: #2C634F;" text="Event" />
           <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="324.0000183105469" text="Date/Hour" />
       </columns>
     </TableView>
     <VBox prefHeight="14.0" prefWidth="418.0">
-        <Label text="Task name" />
-        <TextField fx:id="txtTaskName" prefHeight="26.0" prefWidth="162.0" />
+        <Label text="Task name" textFill="#d2d6cb" />
+        <TextField fx:id="txtTaskName" prefHeight="26.0" prefWidth="162.0" style="-fx-border-color: #4D685A;" styleClass="underline-text-field" stylesheets="@styles/style.css" />
     </VBox>
-    <Label text="Deadline" />
+    <Label text="Deadline" textFill="#d2d6cb" />
    <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
       <children>
-         <Label text="Date/Hour" />
+         <Label text="Date/Hour" textFill="#d2d6cb" />
          <DateTimePicker fx:id="taskDateTime" promptText="YYYY-DD-MM HH:mm" />
       </children>
       <opaqueInsets>
          <Insets left="50.0" />
       </opaqueInsets>
    </HBox>
-   <Button mnemonicParsing="false" onAction="#salvar" text="Salvar" />
+   <Button mnemonicParsing="false" onAction="#salvar" styleClass="base-button" stylesheets="@styles/style.css" text="Salvar" />
 
 <!--    <HBox prefHeight="15.0" prefWidth="418.0" spacing="20.0">-->
 <!--        <Label text="Date" />-->

@@ -18,7 +18,7 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column
-    private boolean isDone; //Task is done?
+    private boolean isDone; //is Task done?
     @Column
     private String name;
     @Column
