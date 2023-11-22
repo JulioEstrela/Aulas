@@ -4,6 +4,7 @@
 <!--<?import com.jfoenix.controls.JFXDatePicker?>-->
 <!--<?import com.jfoenix.controls.JFXTimePicker?>-->
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -12,22 +13,26 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import tornadofx.control.DateTimePicker?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="579.0" spacing="20.0" style="-fx-background-color: #121714;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.todolist.Controller">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="761.0" spacing="20.0" style="-fx-background-color: #121714;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.todolist.ControllerPrincipal">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-    <TableView fx:id="table" prefHeight="284.0" prefWidth="389.0" style="-fx-background-color: #3C896D;">
+    <TableView fx:id="table" prefHeight="284.0" prefWidth="389.0">
       <columns>
-          <TableColumn fx:id="colId" prefWidth="44.000003814697266" style="-fx-background-color: #2C634F;" text="id" />
-          <TableColumn fx:id="colName" prefWidth="169.5999755859375" style="-fx-background-color: #2C634F;" text="Event" />
+          <TableColumn fx:id="colId" prefWidth="44.000003814697266" text="id" />
+          <TableColumn fx:id="colName" prefWidth="169.5999755859375" text="Event" />
           <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="324.0000183105469" text="Date/Hour" />
       </columns>
     </TableView>
     <VBox prefHeight="14.0" prefWidth="418.0">
         <Label text="Task name" textFill="#d2d6cb" />
-        <TextField fx:id="txtTaskName" prefHeight="26.0" prefWidth="162.0" style="-fx-border-color: #4D685A;" styleClass="underline-text-field" stylesheets="@styles/style.css" />
+        <TextField fx:id="txtTaskName" prefHeight="26.0" prefWidth="162.0" style="-fx-border-color: #4D685A;" styleClass="underline-text-field" stylesheets="@styles/style.css">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
     </VBox>
     <Label text="Deadline" textFill="#d2d6cb" />
    <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
@@ -39,7 +44,22 @@
          <Insets left="50.0" />
       </opaqueInsets>
    </HBox>
-   <Button mnemonicParsing="false" onAction="#salvar" styleClass="base-button" stylesheets="@styles/style.css" text="Salvar" />
+   <HBox alignment="CENTER" prefHeight="27.0" prefWidth="400.0" spacing="50.0">
+      <children>
+         <Button mnemonicParsing="false" onAction="#saveTask" styleClass="base-button" stylesheets="@styles/style.css" text="Salvar" />
+         <Button fx:id="editBtn" layoutX="60.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: #679ECB;" stylesheets="@styles/style.css" text="Editar">
+            <styleClass>
+               <String fx:value="base-button" />
+               <String fx:value="disabled-button" />
+            </styleClass>
+         </Button>
+         <Button fx:id="removeBtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#removeTask" style="-fx-background-color: #D1495B;" stylesheets="@styles/style.css" text="Deletar">
+            <styleClass>
+               <String fx:value="base-button" />
+               <String fx:value="disabled-button" />
+            </styleClass></Button>
+      </children>
+   </HBox>
 
 <!--    <HBox prefHeight="15.0" prefWidth="418.0" spacing="20.0">-->
 <!--        <Label text="Date" />-->
