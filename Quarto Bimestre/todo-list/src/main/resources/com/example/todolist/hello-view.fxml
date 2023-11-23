@@ -4,27 +4,23 @@
 <!--<?import com.jfoenix.controls.JFXDatePicker?>-->
 <!--<?import com.jfoenix.controls.JFXTimePicker?>-->
 
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import tornadofx.control.DateTimePicker?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import tornadofx.control.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="761.0" spacing="20.0" style="-fx-background-color: #121714;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.todolist.ControllerPrincipal">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="761.0" spacing="20.0" style="-fx-background-color: #121714;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.todolist.ControllerPrincipal">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-    <TableView fx:id="table" prefHeight="284.0" prefWidth="389.0">
+    <TableView fx:id="table" onMouseClicked="#selected" prefHeight="284.0" prefWidth="389.0">
       <columns>
           <TableColumn fx:id="colId" prefWidth="44.000003814697266" text="id" />
           <TableColumn fx:id="colName" prefWidth="169.5999755859375" text="Event" />
           <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="324.0000183105469" text="Date/Hour" />
+          <TableColumn fx:id="colCategory" prefWidth="180.0" text="Category" />
       </columns>
     </TableView>
     <VBox prefHeight="14.0" prefWidth="418.0">
@@ -34,10 +30,14 @@
             <Font size="15.0" />
          </font></TextField>
     </VBox>
-    <Label text="Deadline" textFill="#d2d6cb" />
+   <VBox prefHeight="14.0" prefWidth="418.0">
+      <children>
+         <ComboBox fx:id="comboBoxCategories" prefWidth="150.0" />
+      </children>
+   </VBox>
    <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
       <children>
-         <Label text="Date/Hour" textFill="#d2d6cb" />
+         <Label text="Date/Hour (Deadline)" textFill="#d2d6cb" />
          <DateTimePicker fx:id="taskDateTime" promptText="YYYY-DD-MM HH:mm" />
       </children>
       <opaqueInsets>

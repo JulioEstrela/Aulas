@@ -23,11 +23,14 @@ public class Task {
     private String name;
     @Column
     private LocalDateTime date;
+    @Column
+    private String category;
 
-    public Task(String name, LocalDateTime date) {
+    public Task(String name, LocalDateTime date, String category) {
+        this.isDone = isDone;
         this.name = name;
         this.date = date;
-        this.isDone = false;
+        this.category = category;
     }
 
     public Task(){
@@ -66,6 +69,14 @@ public class Task {
         this.date = date;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
         return "Task{" +
@@ -73,6 +84,9 @@ public class Task {
                 ", isDone=" + isDone +
                 ", name='" + name + '\'' +
                 ", date=" + date +
+                ", category='" + category + '\'' +
                 '}';
     }
 }
+
+
