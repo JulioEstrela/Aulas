@@ -24,10 +24,6 @@ public class Task {
     @Column
     private LocalDateTime date;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "task-category", joinColumns = @JoinColumn(name = "task_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private List<Category> categories;
-
     public Task(String name, LocalDateTime date) {
         this.name = name;
         this.date = date;
@@ -70,14 +66,6 @@ public class Task {
         this.date = date;
     }
 
-    public List<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
-    }
-
     @Override
     public String toString() {
         return "Task{" +
@@ -85,7 +73,6 @@ public class Task {
                 ", isDone=" + isDone +
                 ", name='" + name + '\'' +
                 ", date=" + date +
-                ", categories=" + categories +
                 '}';
     }
 }

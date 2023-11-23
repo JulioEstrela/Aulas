@@ -111,4 +111,22 @@ public class ControllerPrincipal implements Initializable {
             showTasks();
         }
     }
+
+    public void editTask(ActionEvent actionEvent){
+        Task task = table.getSelectionModel().getSelectedItem();
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+
+        session.createQuery("update Task set name = :name, date = :date where id = :taskId")
+                .setParameter("name", txtTaskName.getText())
+                .setParameter("date", taskDateTime.getDateTimeValue().truncatedTo(ChronoUnit.MINUTES))
+                .setParameter("taskId", task.getId())
+                .executeUpdate();
+
+        transaction.commit();
+        session.close();
+
+        showTasks();
+    }
 }

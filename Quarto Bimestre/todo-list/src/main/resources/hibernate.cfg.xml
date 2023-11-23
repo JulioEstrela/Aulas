@@ -11,7 +11,7 @@
         <!-- JDBC connection pool settings ... using built-in test pool -->
         <property name="connection.pool_size">1</property>
         <!-- Select our SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <!-- Echo the SQL to stdout -->
         <property name="show_sql">true</property>
         <!-- Set the current session context -->
@@ -26,7 +26,6 @@
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
         <mapping class="com.example.todolist.model.User" />
         <mapping class="com.example.todolist.model.Task" />
-        <mapping class="com.example.todolist.model.Category" />
 
     </session-factory>
 </hibernate-configuration>

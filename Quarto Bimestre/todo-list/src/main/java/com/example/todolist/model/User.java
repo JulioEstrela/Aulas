@@ -6,12 +6,12 @@ import jakarta.persistence.*;
  * Armazena as informações do usuário
  */
 @Entity
-@Table
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column
+    @Column(unique = true)
     private String login;
     @Column
     private String password;
@@ -19,6 +19,9 @@ public class User {
     public User(String login, String password) {
         this.login = login;
         this.password = password;
+    }
+
+    public User() {
     }
 
     public int getId() {

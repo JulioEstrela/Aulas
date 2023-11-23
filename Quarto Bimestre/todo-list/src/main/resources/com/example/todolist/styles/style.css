@@ -8,12 +8,16 @@
     -fx-padding: 10px;
     -fx-prompt-text-fill: #d1d2cb;
 
-    -fx-text-fill: #d1d2cb;
+    -fx-text-fill: #d2d6cb;
 }
 
 .underline-text-field:focused {
     -fx-border-color: #43718b; /* Cor da borda quando em foco */
     -fx-background-color: #d1d2cb50; /* Cor de fundo quando em foco */
+}
+
+.login-text-field {
+    -fx-text-fill: #121714;
 }
 
 .base-button {

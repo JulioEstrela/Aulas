@@ -47,7 +47,7 @@
    <HBox alignment="CENTER" prefHeight="27.0" prefWidth="400.0" spacing="50.0">
       <children>
          <Button mnemonicParsing="false" onAction="#saveTask" styleClass="base-button" stylesheets="@styles/style.css" text="Salvar" />
-         <Button fx:id="editBtn" layoutX="60.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: #679ECB;" stylesheets="@styles/style.css" text="Editar">
+         <Button fx:id="editBtn" layoutX="60.0" layoutY="10.0" mnemonicParsing="false" onAction="#editTask" style="-fx-background-color: #679ECB;" stylesheets="@styles/style.css" text="Editar">
             <styleClass>
                <String fx:value="base-button" />
                <String fx:value="disabled-button" />
