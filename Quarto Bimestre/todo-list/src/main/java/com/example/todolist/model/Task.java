@@ -23,15 +23,14 @@ public class Task {
     private String name;
     @Column
     private LocalDateTime date;
+    @Column
+    private String category;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "task-category", joinColumns = @JoinColumn(name = "task_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private List<Category> categories;
-
-    public Task(String name, LocalDateTime date) {
+    public Task(String name, LocalDateTime date, String category) {
+        this.isDone = isDone;
         this.name = name;
         this.date = date;
-        this.isDone = false;
+        this.category = category;
     }
 
     public Task(){
@@ -70,12 +69,12 @@ public class Task {
         this.date = date;
     }
 
-    public List<Category> getCategories() {
-        return categories;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     @Override
@@ -85,7 +84,7 @@ public class Task {
                 ", isDone=" + isDone +
                 ", name='" + name + '\'' +
                 ", date=" + date +
-                ", categories=" + categories +
+                ", category='" + category + '\'' +
                 '}';
     }
 }
